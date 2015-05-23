@@ -1,6 +1,6 @@
 package collections.stack;
 
-public interface SimpleStack<T> {
+public interface Stack<T> {
     void push(T newElement);
     T pop();
     int size();

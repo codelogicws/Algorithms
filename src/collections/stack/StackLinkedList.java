@@ -1,12 +1,12 @@
 package collections.stack;
 
-public class SimpleStackNormal<T> implements SimpleStack<T> {
+public class StackLinkedList<T> implements Stack<T> {
 
     private Node<T> head;
     private int size;
     private int capacity;
 
-    protected SimpleStackNormal(int capacity){
+    protected StackLinkedList(int capacity){
         if(capacity < 0)
             throw new NegativeSizeStack();
         this.capacity = capacity;

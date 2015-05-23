@@ -7,9 +7,9 @@ import org.junit.After;
 
 import static org.junit.Assert.*;
 
-public class TestSimpleStack {
+public class TestStackLinkedList {
 
-    private SimpleStack<Integer> stack;
+    private Stack<Integer> stack;
 
     @Before
     public void before() throws Exception {
@@ -41,9 +41,9 @@ public class TestSimpleStack {
         assertEquals(0, pop());
     }
 
-    @Test (expected = SimpleStack.NegativeSizeStack.class)
+    @Test (expected = Stack.NegativeSizeStack.class)
     public void createAStackWithANegativeSize_YeildsNegativeStackException(){
-        SimpleStack<Integer> testStack = StackFactory.make(-1);
+        Stack<Integer> testStack = StackFactory.make(-1);
     }
 
     @Test
@@ -58,7 +58,7 @@ public class TestSimpleStack {
         for(long i=0;i<overFlowAt;i++) stack.push(0);
     }
 
-    @Test (expected = SimpleStack.StackUnderFlow.class)
+    @Test (expected = Stack.StackUnderFlow.class)
     public void popFromAEmptyStack(){
         pop();
     }
@@ -68,14 +68,14 @@ public class TestSimpleStack {
         assertTrue(stack.isEmpty());
     }
 
-    @Test(expected = SimpleStack.StackEmptyHasNoObject.class)
+    @Test(expected = Stack.StackEmptyHasNoObject.class)
     public void peekAtEmptyStack(){
         stack.peek();
     }
 
-    @Test(expected = SimpleStack.StackEmptyHasNoObject.class)
+    @Test(expected = Stack.StackEmptyHasNoObject.class)
     public void peekAtEmptyZeroStack(){
-        SimpleStack<Integer> zeroStack = StackFactory.make(0);
+        Stack<Integer> zeroStack = StackFactory.make(0);
         zeroStack.peek();
     }
 
@@ -85,15 +85,15 @@ public class TestSimpleStack {
         assertFalse(stack.isEmpty());
     }
 
-    @Test (expected = SimpleStack.StackUnderFlow.class)
+    @Test (expected = Stack.StackUnderFlow.class)
     public void popFromZeroStack(){
-        SimpleStack<Integer> zeroStack = StackFactory.make(0);
+        Stack<Integer> zeroStack = StackFactory.make(0);
         zeroStack.pop();
     }
 
     @Test (expected = StackOverflowError.class)
     public void pushZeroStack(){
-        SimpleStack<Integer> zeroStack = StackFactory.make(0);
+        Stack<Integer> zeroStack = StackFactory.make(0);
         zeroStack.push(999);
     }
 

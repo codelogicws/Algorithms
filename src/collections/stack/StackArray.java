@@ -1,15 +1,20 @@
 package collections.stack;
 
-public class ZeroCapacityStack <T> implements Stack<T> {
+public class StackArray <T> implements Stack<T>{
+
+    private int capacity;
+
+    protected StackArray(int capacity){
+        this.capacity = capacity;
+    }
 
     @Override
     public void push(T newElement) {
-        throw new StackOverflowError();
     }
 
     @Override
     public T pop() {
-        throw new StackUnderFlow();
+        return null;
     }
 
     @Override
@@ -19,12 +24,11 @@ public class ZeroCapacityStack <T> implements Stack<T> {
 
     @Override
     public boolean isEmpty() {
-        return true;
+        return false;
     }
 
     @Override
-    public T peek(){
-        throw new StackEmptyHasNoObject();
+    public T peek() {
+        return null;
     }
-
 }

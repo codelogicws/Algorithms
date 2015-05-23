@@ -1,11 +1,11 @@
 package test;
 import org.junit.runners.Suite;
 import org.junit.runner.RunWith;
-import test.collections.stack.TestSimpleStack;
+import test.collections.stack.TestStackLinkedList;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        TestSimpleStack.class
+        TestStackLinkedList.class
 })
 public class UnitTestSuite {
 
