@@ -7,7 +7,7 @@ import org.junit.After;
 
 import static org.junit.Assert.*;
 
-public class TestStackLinkedList {
+public class StackLinkedListTest {
 
     private Stack<Integer> stack;
 

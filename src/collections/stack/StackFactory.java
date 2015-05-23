@@ -9,10 +9,14 @@ public class StackFactory {
         return stack;
     }
 
-    public static <T> Stack<T> makeStackArray(int capacity) {
-        if(capacity == 0)
+    public static Stack<Integer> makeStackIntegerArray(int capacity){
+        return makeStackArray(new Integer[capacity]);
+    }
+
+    public static <T> Stack<T> makeStackArray(T[] emptyArray) {
+        if(emptyArray.length == 0)
             return new ZeroCapacityStack();
-        Stack<T> stack = new StackArray<T>(capacity);
+        Stack<T> stack = new StackArray<T>(emptyArray);
         return stack;
     }
 
