@@ -1,4 +1,4 @@
-package collections.stack;
+package ws.codelogic.collections.stack;
 
 public interface Stack<T> {
     void push(T newElement);

@@ -1,4 +1,4 @@
-package collections.stack;
+package ws.codelogic.collections.stack;
 
 public class ZeroCapacityStack <T> implements Stack<T> {
 

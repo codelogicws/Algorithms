@@ -1,6 +1,6 @@
-package test.collections.stack;
+package test.ws.codelogic.collections.stack;
 
-import collections.stack.*;
+import ws.codelogic.collections.stack.*;
 import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After;
