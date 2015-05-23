@@ -3,59 +3,66 @@ package ws.codelogic.strings.parentheses;
 import ws.codelogic.collections.stack.Stack;
 import ws.codelogic.collections.stack.StackFactory;
 
-import java.util.HashSet;
+import java.util.HashMap;
 
 public class ParenthesesValidater {
 
-    Stack<Character> stack;
+    private Stack<Character> openBracketsSoFar;
     private final int parenthesesCapacity;
-    HashSet<Character> open;
-    HashSet<Character> closed;
+    private HashMap<Character, Character> parenthesesPairs;
 
     public ParenthesesValidater(int parenthesesCapacity){
         initBrackets();
         if(parenthesesCapacity < 0) throw new IllegalCapacity();
         this.parenthesesCapacity = parenthesesCapacity;
-        stack = StackFactory.make(parenthesesCapacity);
+        openBracketsSoFar = StackFactory.make(parenthesesCapacity);
     }
 
     private void initBrackets() {
-        open = new HashSet<Character>();
-        closed = new HashSet<Character>();
-        open.add('(');
-        open.add('{');
-        closed.add(')');
-        closed.add('}');
+        parenthesesPairs = new HashMap<Character, Character>();
+        parenthesesPairs.put(')', '(');
+        parenthesesPairs.put('}', '{');
+        parenthesesPairs.put('>', '<');
+        parenthesesPairs.put(']', '[');
     }
 
     public boolean isValid(String s) {
         for(int i=0;i<s.length();i++){
 
-            if(isOpenParentheses(s, i)) {
+            char currentChar = s.charAt(i);
+
+            if(isOpenParentheses(currentChar)) {
                 checkForOverFlow();
-                stack.push(s.charAt(i));
-            }else if(isClosedParentheses(s, i)){
-               if(stack.isEmpty())
+                openBracketsSoFar.push(s.charAt(i));
+            }else if(isClosedParentheses(currentChar)){
+               if(openBracketsSoFar.isEmpty()) {
                    return false;
-                stack.pop();
+               }else if(parenthesesPairs.get(currentChar) != openBracketsSoFar.peek()){
+                   return false;
+               }
+                openBracketsSoFar.pop();
             }
 
         }
-        if(stack.size() != 0)
+        if(openBracketsSoFar.size() != 0)
             return false;
         return true;
     }
 
     private void checkForOverFlow() {
-        if(stack.size() == parenthesesCapacity -1) throw new ParenthesesOverFlow();
+        if(openBracketsSoFar.size() == parenthesesCapacity -1) throw new ParenthesesOverFlow();
     }
 
-    private boolean isClosedParentheses(String s, int i) {
-        return closed.contains(s.charAt(i));
+    private boolean isClosedParentheses(char toMatch) {
+        for(char c : parenthesesPairs.keySet())
+            if(c == toMatch) return true;
+        return false;
     }
 
-    private boolean isOpenParentheses(String s, int i) {
-        return open.contains(s.charAt(i));
+    private boolean isOpenParentheses(char toMatch) {
+        for(char c : parenthesesPairs.values())
+            if(c == toMatch) return true;
+        return false;
     }
 
 }

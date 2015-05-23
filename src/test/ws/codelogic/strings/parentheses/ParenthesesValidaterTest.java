@@ -48,10 +48,30 @@ public class ParenthesesValidaterTest {
         assertFalse(parenValidator.isValid("({{)"));
     }
 
-//    @Test
-//    public void multiParenthesesInterchangabilityMistake() {
-//        assertFalse(parenValidator.isValid("(}"));
-//    }
+    @Test
+    public void multiParenthesesInterchangabilityMistake() {
+        assertFalse(parenValidator.isValid("(}"));
+    }
+
+    @Test
+    public void testParenthesesWithOtherText() {
+        assertTrue(parenValidator.isValid("(this is stuff<this is more stuff>)"));
+    }
+
+    @Test
+    public void testParenthesesWithOtherWordsMistake() {
+        assertFalse(parenValidator.isValid("(other words<<>)"));
+    }
+
+    @Test
+    public void failerOfSquareBracket(){
+        assertFalse(parenValidator.isValid("[]]"));
+    }
+
+    @Test
+    public void failerOfCurlyBracket() {
+        assertFalse(parenValidator.isValid("{{}"));
+    }
 
     @Test (expected = IllegalCapacity.class)
     public void negativeCapacityConstructionThrowsException() {
