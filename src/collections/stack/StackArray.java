@@ -2,39 +2,34 @@ package collections.stack;
 
 public class StackArray <T> implements Stack<T>{
 
-    private int capacity;
-    private int size;
-    T[] stackArray;
-    T element;
+    private T[] data;
+    private int pointer;
 
     protected StackArray(T[] emptyArray){
-        this.capacity = emptyArray.length;
-        stackArray = emptyArray;
-        size = 0;
+        data = emptyArray;
+        pointer = 0;
     }
 
     @Override
     public void push(T newElement) {
-        if(size >= capacity) throw new StackOverflowError();
-        element = newElement;
-        size++;
+        if(pointer >= data.length) throw new StackOverflowError();
+        data[pointer++] = newElement;
     }
 
     @Override
     public T pop() {
-        if(size == 0) throw new StackUnderFlow();
-        --size;
-        return element;
+        if(pointer == 0) throw new StackUnderFlow();
+        return data[--pointer];
     }
 
     @Override
     public int size() {
-        return size;
+        return pointer;
     }
 
     @Override
     public boolean isEmpty() {
-        return size == 0;
+        return pointer == 0;
     }
 
     @Override

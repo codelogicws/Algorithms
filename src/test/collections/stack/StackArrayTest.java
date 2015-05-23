@@ -48,13 +48,13 @@ public class StackArrayTest {
         assertEquals(2, pop());
     }
 
-//    @Test
-//    public void push2PopTheSame() {
-//        stack.push(1);
-//        stack.push(2);
-//        assertEquals(2, pop());
-//        assertEquals(1, pop());
-//    }
+    @Test
+    public void push2PopTheSame() {
+        stack.push(1);
+        stack.push(2);
+        assertEquals(2, pop());
+        assertEquals(1, pop());
+    }
 
     private int pop(){
         return stack.pop();
@@ -65,9 +65,20 @@ public class StackArrayTest {
         stack.pop();
     }
 
+
     @Test (expected = StackOverflowError.class)
     public void pushOnAFullStack() {
         for(int i=0;i<STACKSIZE+1;i++)stack.push(0);
+    }
+
+    @Test
+    public void DoesAZeroCapacityStackGetCreated() {
+        Stack newStack = StackFactory.makeStackIntegerArray(0);
+    }
+
+    @Test (expected = Stack.NegativeSizeStack.class)
+    public void DoesANegativeStackThrowException() {
+        Stack newStack = StackFactory.makeStackIntegerArray(-1);
     }
 
 }
