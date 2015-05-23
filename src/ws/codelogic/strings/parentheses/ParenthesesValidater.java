@@ -3,17 +3,29 @@ package ws.codelogic.strings.parentheses;
 import ws.codelogic.collections.stack.Stack;
 import ws.codelogic.collections.stack.StackFactory;
 
+import java.util.HashSet;
+
 public class ParenthesesValidater {
 
     Stack<Character> stack;
     private final int parenthesesCapacity;
-    char open = '(';
-    char closed = ')';
+    HashSet<Character> open;
+    HashSet<Character> closed;
 
     public ParenthesesValidater(int parenthesesCapacity){
+        initBrackets();
         if(parenthesesCapacity < 0) throw new IllegalCapacity();
         this.parenthesesCapacity = parenthesesCapacity;
         stack = StackFactory.make(parenthesesCapacity);
+    }
+
+    private void initBrackets() {
+        open = new HashSet<Character>();
+        closed = new HashSet<Character>();
+        open.add('(');
+        open.add('{');
+        closed.add(')');
+        closed.add('}');
     }
 
     public boolean isValid(String s) {
@@ -39,11 +51,11 @@ public class ParenthesesValidater {
     }
 
     private boolean isClosedParentheses(String s, int i) {
-        return s.charAt(i) == closed;
+        return closed.contains(s.charAt(i));
     }
 
     private boolean isOpenParentheses(String s, int i) {
-        return s.charAt(i) == open;
+        return open.contains(s.charAt(i));
     }
 
 }

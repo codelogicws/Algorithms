@@ -38,6 +38,21 @@ public class ParenthesesValidaterTest {
         assertFalse(parenValidator.isValid("((((((("));
     }
 
+    @Test
+    public void multiParenthesesTypes() {
+        assertTrue(parenValidator.isValid("({})"));
+    }
+
+    @Test
+    public void multiParenthesesMistake() {
+        assertFalse(parenValidator.isValid("({{)"));
+    }
+
+//    @Test
+//    public void multiParenthesesInterchangabilityMistake() {
+//        assertFalse(parenValidator.isValid("(}"));
+//    }
+
     @Test (expected = IllegalCapacity.class)
     public void negativeCapacityConstructionThrowsException() {
         ParenthesesValidater pv = new ParenthesesValidater(-1);
