@@ -34,4 +34,9 @@ public class PredictLeftParenthesesTest {
     public void addMultiParentheses() {
         assertEquals("((2+1)*(2+1))", predict.insertLeft("2+1)*2+1))"));
     }
+
+    @Test
+    public void largeInputTest() {
+        assertEquals("((3+4)*(5+8)/(8-9)*(345-90))", predict.insertLeft("3+4)*5+8)/8-9)*345-90))"));
+    }
 }
