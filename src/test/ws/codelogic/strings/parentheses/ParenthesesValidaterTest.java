@@ -10,67 +10,67 @@ import static org.junit.Assert.*;
 
 public class ParenthesesValidaterTest {
 
-    private ParenthesesValidater parenValidator;
+    private ParenthesesValidater validator;
     private final static int TESTCAPACITY = 6;
 
     @Before
     public void before() throws Exception {
-        parenValidator = new ParenthesesValidater(TESTCAPACITY);
+        validator = new ParenthesesValidater(TESTCAPACITY);
     }
 
     @Test
     public void simpleOpenCloseParenthesesYieldsTrue() {
-        assertTrue(parenValidator.isValid("()"));
+        assertTrue(validator.isValid("()"));
     }
 
     @Test
     public void toManyOpenBrackets() {
-        assertFalse(parenValidator.isValid("(()"));
+        assertFalse(validator.isValid("(()"));
     }
 
     @Test
     public void toManyClosingBrackets() {
-        assertFalse(parenValidator.isValid("())"));
+        assertFalse(validator.isValid("())"));
     }
 
     @Test (expected = ParenthesesOverFlow.class)
     public void overPushTheCapacity() {
-        assertFalse(parenValidator.isValid("((((((("));
+        assertFalse(validator.isValid("((((((("));
     }
 
     @Test
     public void multiParenthesesTypes() {
-        assertTrue(parenValidator.isValid("({})"));
+        assertTrue(validator.isValid("({})"));
     }
 
     @Test
     public void multiParenthesesMistake() {
-        assertFalse(parenValidator.isValid("({{)"));
+        assertFalse(validator.isValid("({{)"));
     }
 
     @Test
     public void multiParenthesesInterchangabilityMistake() {
-        assertFalse(parenValidator.isValid("(}"));
+        assertFalse(validator.isValid("(}"));
     }
 
     @Test
     public void testParenthesesWithOtherText() {
-        assertTrue(parenValidator.isValid("(this is stuff<this is more stuff>)"));
+        assertTrue(validator.isValid("(this is stuff<this is more stuff>)"));
     }
 
     @Test
     public void testParenthesesWithOtherWordsMistake() {
-        assertFalse(parenValidator.isValid("(other words<<>)"));
+        assertFalse(validator.isValid("(other words<<>)"));
     }
 
     @Test
     public void failerOfSquareBracket(){
-        assertFalse(parenValidator.isValid("[]]"));
+        assertFalse(validator.isValid("[]]"));
     }
 
     @Test
     public void failerOfCurlyBracket() {
-        assertFalse(parenValidator.isValid("{{}"));
+        assertFalse(validator.isValid("{{}"));
     }
 
     @Test (expected = IllegalCapacity.class)
