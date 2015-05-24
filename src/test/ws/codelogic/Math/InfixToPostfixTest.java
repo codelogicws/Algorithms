@@ -40,4 +40,24 @@ public class InfixToPostfixTest {
         assertEquals("72-5+", converter.convert("7-2+5"));
     }
 
+    @Test
+    public void threeDigitNumber() {
+        assertEquals("4(567)+", converter.convert("4+(567)"));
+    }
+
+    @Test
+    public void multiplicationTest() {
+        assertEquals("4(567)*", converter.convert("4*(567)"));
+    }
+
+    @Test
+    public void divisionTest() {
+        assertEquals("4(567)/", converter.convert("4/(567)"));
+    }
+
+    @Test
+    public void multiplicationPriority() {
+        assertEquals("422*+", converter.convert("4+2*2"));
+    }
+
 }

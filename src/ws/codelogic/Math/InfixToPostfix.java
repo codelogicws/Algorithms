@@ -2,12 +2,12 @@ package ws.codelogic.Math;
 
 import ws.codelogic.collections.stack.Stack;
 import ws.codelogic.collections.stack.StackFactory;
-
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class InfixToPostfix {
 
     private static final int MAXSTACKCAPACITY = 100000;
+    private HashMap<Character, Integer> signPriority;
     private Stack<Character> signs;
     private StringBuffer newString;
 
@@ -21,33 +21,49 @@ public class InfixToPostfix {
     }
 
     private void sortCharacters(char current) {
-        if(isPlusOrMinus(current)){
+        if(isASign(current)) {
             addSign(current);
         }else{
             newString.append(current);
         }
     }
 
+    private boolean isASign(char current) {
+        for(char c : signPriority.keySet()){
+            if(c == current) return true;
+        }
+        return false;
+    }
+
     private void init() {
+        signPriority = new HashMap<Character, Integer>();
+        signPriority.put('*', 2);
+        signPriority.put('/', 2);
+        signPriority.put('+', 1);
+        signPriority.put('-', 1);
         newString = new StringBuffer();
         signs = StackFactory.make(MAXSTACKCAPACITY);
     }
 
     private void insertLastSigns() {
-        if(!signs.isEmpty()) newString.append(signs.pop());
-    }
-
-    private boolean isPlusOrMinus(char current) {
-        return current == '-' || current == '+';
+        int size = signs.size();
+        for(int i=0;i<size;i++)
+            newString.append(signs.pop());
     }
 
     private void addSign(char current) {
         if(signs.isEmpty()) {
             signs.push(current);
+        }else if(greaterPriorityThenSignInStack(current)){
+            signs.push(current);
         }else{
             newString.append(signs.pop());
             signs.push(current);
         }
+    }
+
+    private boolean greaterPriorityThenSignInStack(char current) {
+        return signPriority.get(current) > signPriority.get(signs.peek());
     }
 
 }
