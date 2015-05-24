@@ -30,9 +30,14 @@ public class InfixToPostfixTest {
         assertEquals("27-", converter.convert("2-7"));
     }
 
-//    @Test
-//    public void multiSignTest() {
-//        assertEquals("72-5+", converter.convert("7-2+5"));
-//    }
+    @Test
+    public void justANumber() {
+        assertEquals("456", converter.convert("456"));
+    }
+
+    @Test
+    public void multiSignTest() {
+        assertEquals("72-5+", converter.convert("7-2+5"));
+    }
 
 }
