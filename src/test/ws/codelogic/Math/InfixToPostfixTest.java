@@ -42,17 +42,17 @@ public class InfixToPostfixTest {
 
     @Test
     public void threeDigitNumber() {
-        assertEquals("4(567)+", converter.convert("4+(567)"));
+        assertEquals("4567+", converter.convert("4+(567)"));
     }
 
     @Test
     public void multiplicationTest() {
-        assertEquals("4(567)*", converter.convert("4*(567)"));
+        assertEquals("4567*", converter.convert("4*(567)"));
     }
 
     @Test
     public void divisionTest() {
-        assertEquals("4(567)/", converter.convert("4/(567)"));
+        assertEquals("4567/", converter.convert("4/(567)"));
     }
 
     @Test
@@ -60,10 +60,14 @@ public class InfixToPostfixTest {
         assertEquals("422*+", converter.convert("4+2*2"));
     }
 
-//    @Test
-//    public void parenthesisTest() {
-//        assertEquals("42+2*", converter.convert("(4+2)*2"));
-//    }
-    
+    @Test
+    public void parenthesisTest() {
+        assertEquals("42+2*", converter.convert("(4+2)*2"));
+    }
+
+    @Test
+    public void largeParanthesisTest() {
+        assertEquals("42+2*5*64-9*+", converter.convert("(4+2)*2*5+(6-4)*9"));
+    }
 
 }
