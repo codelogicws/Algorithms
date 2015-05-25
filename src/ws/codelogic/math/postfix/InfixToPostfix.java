@@ -6,16 +6,28 @@ import java.util.HashMap;
 
 public class InfixToPostfix {
 
-    private static final int MAXSTACKCAPACITY = 100000;
+    private static final int MAXSTACKCAPACITY = Integer.MAX_VALUE;
     private HashMap<Character, Integer> signPriority;
     private Stack<Character> signs;
     private StringBuffer newString;
 
     public String convert(String s) {
         init();
+        verifyEquastion(s);
         arrangeCharaters(s);
         insertLastSigns();
         return new String(newString);
+    }
+
+    private void verifyEquastion(String s) {
+        for(int i=0;i<s.length()-1;i++){
+            if(isANonParenthesisSign(s.charAt(i)) && isANonParenthesisSign(s.charAt(i+1)))
+                throw new MultipleSignsTogetherInvalidEquation();
+        }
+    }
+
+    private boolean isANonParenthesisSign(char c) {
+        return isASign(c) && !isParenthesis(c);
     }
 
     private void arrangeCharaters(String s) {
@@ -42,9 +54,7 @@ public class InfixToPostfix {
     }
 
     private boolean isASign(char current) {
-        for(char c : signPriority.keySet())
-            if(c == current) return true;
-        return isParenthesis(current);
+        return signPriority.containsKey(current);
     }
 
     private void init() {
@@ -98,6 +108,5 @@ public class InfixToPostfix {
     private Integer getCurrentPriority() {
         return signPriority.get(signs.peek());
     }
-
 
 }

@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After;
 import ws.codelogic.math.postfix.InfixToPostfix;
+import ws.codelogic.math.postfix.MultipleSignsTogetherInvalidEquation;
 
 import static org.junit.Assert.assertEquals;
 
@@ -68,6 +69,11 @@ public class InfixToPostfixTest {
     @Test
     public void largeParanthesisTest() {
         assertEquals("42+2*5*64-9*+", converter.convert("(4+2)*2*5+(6-4)*9"));
+    }
+
+    @Test (expected = MultipleSignsTogetherInvalidEquation.class)
+    public void multiSignBackToBack() {
+        converter.convert("4++3");
     }
 
 }
