@@ -60,4 +60,10 @@ public class InfixToPostfixTest {
         assertEquals("422*+", converter.convert("4+2*2"));
     }
 
+//    @Test
+//    public void parenthesisTest() {
+//        assertEquals("42+2*", converter.convert("(4+2)*2"));
+//    }
+    
+
 }

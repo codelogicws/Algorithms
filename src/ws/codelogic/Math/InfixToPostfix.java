@@ -22,6 +22,7 @@ public class InfixToPostfix {
 
     private void sortCharacters(char current) {
         if(isASign(current)) {
+            assert current != '(';
             addSign(current);
         }else{
             newString.append(current);
@@ -54,6 +55,15 @@ public class InfixToPostfix {
     private void addSign(char current) {
         if(signs.isEmpty()) {
             signs.push(current);
+        }else if(current == '(') {
+            System.out.println("Debug-InfixToPostfix: " + "got here (");
+            signs.push(current);
+        }else if(current == ')'){
+            char temp;
+            while((temp = signs.pop()) != '('){
+                System.out.println("Debug-InfixToPostfix: " + temp);
+                newString.append(temp);
+            }
         }else if(greaterPriorityThenSignInStack(current)){
             signs.push(current);
         }else{
@@ -63,7 +73,7 @@ public class InfixToPostfix {
     }
 
     private boolean greaterPriorityThenSignInStack(char current) {
-        return signPriority.get(current) > signPriority.get(signs.peek());
+        return (signPriority.get(current) > signPriority.get(signs.peek()) || current == '(' || current == ')');
     }
 
 }
