@@ -1,9 +1,9 @@
-package test.ws.codelogic.Math; 
+package test.ws.codelogic.math.postfix;
 
 import org.junit.Test; 
 import org.junit.Before; 
 import org.junit.After;
-import ws.codelogic.Math.InfixToPostfix;
+import ws.codelogic.math.postfix.InfixToPostfix;
 
 import static org.junit.Assert.assertEquals;
 

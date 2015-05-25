@@ -1,4 +1,4 @@
-package ws.codelogic.Math;
+package ws.codelogic.math.postfix;
 
 import ws.codelogic.collections.stack.Stack;
 import ws.codelogic.collections.stack.StackFactory;
@@ -34,15 +34,13 @@ public class InfixToPostfix {
     }
 
     private boolean isASign(char current) {
-        for(char c : signPriority.keySet()){
+        for(char c : signPriority.keySet())
             if(c == current) return true;
-        }
-        if(current == '(' || current == ')') return true;
-        return false;
+        return current == '(' || current == ')';
     }
 
     private void init() {
-        signPriority = new HashMap<Character, Integer>();
+        signPriority = new HashMap<>();
         signPriority.put('*', 2);
         signPriority.put('/', 2);
         signPriority.put('+', 1);
@@ -76,9 +74,7 @@ public class InfixToPostfix {
     }
 
     private boolean greaterPriorityThenSignInStack(char current) {
-        if(signs.isEmpty()) return true;
-        if(current == '(' || current == ')') return true;
-        return signPriority.get(current) > getCurrentPriority();
+        return signPriority.get(current) > getCurrentPriority() || current == '(' || current == ')' || signs.isEmpty();
     }
 
     private Integer getCurrentPriority() {
