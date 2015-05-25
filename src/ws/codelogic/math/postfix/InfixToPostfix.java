@@ -23,14 +23,22 @@ public class InfixToPostfix {
             char current = s.charAt(i);
             if(isASign(current)) {
                 addSign(current);
-            }else if(i+1 < s.length() && !isASign(s.charAt(i+1))){
+            }else if(isMoreThenOneDigitNumber(s, i)){
                 newString.append('(');
-                while(i < s.length() && !isASign(s.charAt(i)) ) newString.append(s.charAt(i++));
+                while(hasAnotherLetter(s, i)) newString.append(s.charAt(i++));
                 newString.append(')');
             }else{
                 newString.append(current);
             }
         }
+    }
+
+    private boolean hasAnotherLetter(String s, int i) {
+        return i < s.length() && !isASign(s.charAt(i));
+    }
+
+    private boolean isMoreThenOneDigitNumber(String s, int i) {
+        return hasAnotherLetter(s, i+1);
     }
 
     private boolean isASign(char current) {
