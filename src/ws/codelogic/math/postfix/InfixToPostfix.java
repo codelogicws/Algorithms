@@ -36,7 +36,7 @@ public class InfixToPostfix {
     private boolean isASign(char current) {
         for(char c : signPriority.keySet())
             if(c == current) return true;
-        return current == '(' || current == ')';
+        return isParenthesis(current);
     }
 
     private void init() {
@@ -45,6 +45,8 @@ public class InfixToPostfix {
         signPriority.put('/', 2);
         signPriority.put('+', 1);
         signPriority.put('-', 1);
+        signPriority.put('(', 0);
+        signPriority.put(')', 0);
         newString = new StringBuffer();
         signs = StackFactory.make(MAXSTACKCAPACITY);
     }
@@ -74,13 +76,19 @@ public class InfixToPostfix {
     }
 
     private boolean greaterPriorityThenSignInStack(char current) {
-        return signPriority.get(current) > getCurrentPriority() || current == '(' || current == ')' || signs.isEmpty();
+        return isHigherPriorityThenStack(current) || isParenthesis(current) || signs.isEmpty();
+    }
+
+    private boolean isHigherPriorityThenStack(char current) {
+        return signPriority.get(current) > getCurrentPriority();
+    }
+
+    private boolean isParenthesis(char current) {
+        return current == '(' || current == ')';
     }
 
     private Integer getCurrentPriority() {
-        Integer answer = signPriority.get(signs.peek());
-        if(answer == null) return 0;
-        return answer;
+        return signPriority.get(signs.peek());
     }
 
 
