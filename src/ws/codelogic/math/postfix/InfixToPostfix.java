@@ -23,7 +23,13 @@ public class InfixToPostfix {
         for(int i=0;i<s.length()-1;i++){
             if(isANonParenthesisSign(s.charAt(i)) && isANonParenthesisSign(s.charAt(i+1)))
                 throw new MultipleSignsTogetherInvalidEquation();
+            if(isNotValidCharacter(s.charAt(i)))
+                throw new InvalidCharaterInvalidEquation();
         }
+    }
+
+    private boolean isNotValidCharacter(char c) {
+        return !isASign(c) && !Character.isDigit(c);
     }
 
     private boolean isANonParenthesisSign(char c) {

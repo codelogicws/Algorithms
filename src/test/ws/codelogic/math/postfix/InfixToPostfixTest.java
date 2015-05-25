@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After;
 import ws.codelogic.math.postfix.InfixToPostfix;
+import ws.codelogic.math.postfix.InvalidCharaterInvalidEquation;
 import ws.codelogic.math.postfix.MultipleSignsTogetherInvalidEquation;
 
 import static org.junit.Assert.assertEquals;
@@ -74,6 +75,16 @@ public class InfixToPostfixTest {
     @Test (expected = MultipleSignsTogetherInvalidEquation.class)
     public void multiSignBackToBack() {
         converter.convert("4++3");
+    }
+
+    @Test (expected = InvalidCharaterInvalidEquation.class)
+    public void hasLetters() {
+        converter.convert("1+1helllo");
+    }
+
+    @Test (expected = InvalidCharaterInvalidEquation.class)
+    public void hasSpecialCharater() {
+        converter.convert("1*2%3");
     }
 
 }
