@@ -13,18 +13,23 @@ public class InfixToPostfix {
 
     public String convert(String s) {
         init();
-        for(int i=0;i<s.length();i++){
-            sortCharacters(s.charAt(i));
-        }
+        arrangeCharaters(s);
         insertLastSigns();
         return new String(newString);
     }
 
-    private void sortCharacters(char current) {
-        if(isASign(current)) {
-            addSign(current);
-        }else{
-            newString.append(current);
+    private void arrangeCharaters(String s) {
+        for(int i=0;i<s.length();i++){
+            char current = s.charAt(i);
+            if(isASign(current)) {
+                addSign(current);
+            }else if(i+1 < s.length() && !isASign(s.charAt(i+1))){
+                newString.append('(');
+                while(i < s.length() && !isASign(s.charAt(i)) ) newString.append(s.charAt(i++));
+                newString.append(')');
+            }else{
+                newString.append(current);
+            }
         }
     }
 
