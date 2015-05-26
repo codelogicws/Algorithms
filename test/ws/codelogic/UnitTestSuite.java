@@ -4,6 +4,7 @@ import org.junit.runner.RunWith;
 import ws.codelogic.collections.stack.StackArrayTest;
 import ws.codelogic.collections.stack.StackLinkedListTest;
 import ws.codelogic.math.postfix.InfixToPostfixTest;
+import ws.codelogic.sort.MergeSorterTest;
 import ws.codelogic.strings.parentheses.ParenthesesValidaterTest;
 import ws.codelogic.strings.parentheses.PredictLeftParenthesesTest;
 import ws.codelogic.collections.UnionFindTest;
@@ -15,7 +16,8 @@ import ws.codelogic.collections.UnionFindTest;
         ParenthesesValidaterTest.class,
         PredictLeftParenthesesTest.class,
         InfixToPostfixTest.class,
-        UnionFindTest.class
+        UnionFindTest.class,
+        MergeSorterTest.class
 })
 public class UnitTestSuite {
 
