@@ -17,8 +17,7 @@ public class StackLinkedList<T> implements Stack<T> {
     public void push(T newElement) {
         size++;
         if(size > capacity) throw new StackOverflowError();
-        Node<T> newNode = new Node<T>(newElement, head);
-        head = newNode;
+        head = new Node<>(newElement, head);
     }
 
     @Override
@@ -46,11 +45,11 @@ public class StackLinkedList<T> implements Stack<T> {
         return head.value;
     }
 
-    public class Node <T>{
-        public T value;
-        public Node<T> next;
+    private class Node<T2>{
+        public T2 value;
+        public Node<T2> next;
 
-        public Node(T value, Node<T> next){
+        public Node(T2 value, Node<T2> next){
             this.value = value;
             this.next = next;
         }

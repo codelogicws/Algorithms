@@ -6,25 +6,25 @@ import java.util.HashMap;
 
 public class InfixToPostfix {
 
-    private static final int MAXSTACKCAPACITY = Integer.MAX_VALUE;
+    private static final int MAX_STACK_CAPACITY = Integer.MAX_VALUE;
     private HashMap<Character, Integer> signPriority;
     private Stack<Character> signs;
     private StringBuffer newString;
 
     public String convert(String s) {
         init();
-        verifyEquastion(s);
-        arrangeCharaters(s);
+        verifyEquation(s);
+        arrangeCharacters(s);
         insertLastSigns();
         return new String(newString);
     }
 
-    private void verifyEquastion(String s) {
+    private void verifyEquation(String s) {
         for(int i=0;i<s.length()-1;i++){
             if(isANonParenthesisSign(s.charAt(i)) && isANonParenthesisSign(s.charAt(i+1)))
                 throw new MultipleSignsTogetherInvalidEquation();
             if(isNotValidCharacter(s.charAt(i)))
-                throw new InvalidCharaterInvalidEquation();
+                throw new InvalidCharacterInvalidEquation();
         }
     }
 
@@ -36,7 +36,7 @@ public class InfixToPostfix {
         return isASign(c) && !isParenthesis(c);
     }
 
-    private void arrangeCharaters(String s) {
+    private void arrangeCharacters(String s) {
         for(int i=0;i<s.length();i++){
             char current = s.charAt(i);
             if(isASign(current)) {
@@ -72,7 +72,7 @@ public class InfixToPostfix {
         signPriority.put('(', 0);
         signPriority.put(')', 0);
         newString = new StringBuffer();
-        signs = StackFactory.make(MAXSTACKCAPACITY);
+        signs = StackFactory.make(MAX_STACK_CAPACITY);
     }
 
     private void insertLastSigns() {

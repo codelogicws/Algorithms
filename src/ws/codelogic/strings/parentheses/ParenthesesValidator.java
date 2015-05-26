@@ -5,13 +5,13 @@ import ws.codelogic.collections.stack.StackFactory;
 
 import java.util.HashMap;
 
-public class ParenthesesValidater {
+public class ParenthesesValidator {
 
     private Stack<Character> openBracketsSoFar;
     private final int parenthesesCapacity;
     private HashMap<Character, Character> parenthesesPairs;
 
-    public ParenthesesValidater(int parenthesesCapacity){
+    public ParenthesesValidator(int parenthesesCapacity){
         initBrackets();
         if(parenthesesCapacity < 0) throw new IllegalCapacity();
         this.parenthesesCapacity = parenthesesCapacity;
@@ -19,7 +19,7 @@ public class ParenthesesValidater {
     }
 
     private void initBrackets() {
-        parenthesesPairs = new HashMap<Character, Character>();
+        parenthesesPairs = new HashMap<>();
         parenthesesPairs.put(')', '(');
         parenthesesPairs.put('}', '{');
         parenthesesPairs.put('>', '<');
@@ -44,9 +44,7 @@ public class ParenthesesValidater {
             }
 
         }
-        if(openBracketsSoFar.size() != 0)
-            return false;
-        return true;
+        return openBracketsSoFar.size() == 0;
     }
 
     private void checkForOverFlow() {

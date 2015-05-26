@@ -2,20 +2,17 @@ package ws.codelogic.strings.parentheses;
 
 import org.junit.Test; 
 import org.junit.Before;
-import ws.codelogic.strings.parentheses.IllegalCapacity;
-import ws.codelogic.strings.parentheses.ParenthesesOverFlow;
-import ws.codelogic.strings.parentheses.ParenthesesValidater;
 
 import static org.junit.Assert.*;
 
-public class ParenthesesValidaterTest {
+public class ParenthesesValidatorTest {
 
-    private ParenthesesValidater validator;
-    private final static int TESTCAPACITY = 6;
+    private ParenthesesValidator validator;
+    private final static int TEST_CAPACITY = 6;
 
     @Before
     public void before() throws Exception {
-        validator = new ParenthesesValidater(TESTCAPACITY);
+        validator = new ParenthesesValidator(TEST_CAPACITY);
     }
 
     @Test
@@ -49,7 +46,7 @@ public class ParenthesesValidaterTest {
     }
 
     @Test
-    public void multiParenthesesInterchangabilityMistake() {
+    public void multiParenthesesShouldNotBeInterchangable() {
         assertFalse(validator.isValid("(}"));
     }
 
@@ -64,18 +61,18 @@ public class ParenthesesValidaterTest {
     }
 
     @Test
-    public void failerOfSquareBracket(){
+    public void missMatchSquareBracket(){
         assertFalse(validator.isValid("[]]"));
     }
 
     @Test
-    public void failerOfCurlyBracket() {
+    public void missMatchOfCurlyBracket() {
         assertFalse(validator.isValid("{{}"));
     }
 
     @Test (expected = IllegalCapacity.class)
     public void negativeCapacityConstructionThrowsException() {
-        ParenthesesValidater pv = new ParenthesesValidater(-1);
+        ParenthesesValidator pv = new ParenthesesValidator(-1);
     }
 
 }

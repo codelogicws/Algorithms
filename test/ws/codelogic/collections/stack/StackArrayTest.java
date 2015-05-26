@@ -8,12 +8,12 @@ import static org.junit.Assert.*;
 public class StackArrayTest {
 
     private Stack<Integer> stack;
-    private static final int STACKSIZE = 5;
+    private static final int STACK_SIZE = 5;
 
 
     @Before
     public void before() throws Exception {
-        stack = StackFactory.makeStackIntegerArray(STACKSIZE);
+        stack = StackFactory.makeStackIntegerArray(STACK_SIZE);
     }
 
     @Test
@@ -66,7 +66,7 @@ public class StackArrayTest {
 
     @Test (expected = StackOverflowError.class)
     public void pushOnAFullStack() {
-        for(int i=0;i<STACKSIZE+1;i++)stack.push(0);
+        for(int i=0;i< STACK_SIZE +1;i++)stack.push(0);
     }
 
     @Test

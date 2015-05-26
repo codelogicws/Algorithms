@@ -65,7 +65,7 @@ public class InfixToPostfixTest {
     }
 
     @Test
-    public void largeParanthesisTest() {
+    public void largeParenthesisTest() {
         assertEquals("42+2*5*64-9*+", converter.convert("(4+2)*2*5+(6-4)*9"));
     }
 
@@ -74,13 +74,13 @@ public class InfixToPostfixTest {
         converter.convert("4++3");
     }
 
-    @Test (expected = InvalidCharaterInvalidEquation.class)
+    @Test (expected = InvalidCharacterInvalidEquation.class)
     public void hasLetters() {
-        converter.convert("1+1helllo");
+        converter.convert("1+1hello");
     }
 
-    @Test (expected = InvalidCharaterInvalidEquation.class)
-    public void hasSpecialCharater() {
+    @Test (expected = InvalidCharacterInvalidEquation.class)
+    public void hasSpecialCharacter() {
         converter.convert("1*2%3");
     }
 
