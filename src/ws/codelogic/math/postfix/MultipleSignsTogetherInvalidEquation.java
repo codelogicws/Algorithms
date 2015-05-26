@@ -1,4 +1,4 @@
 package ws.codelogic.math.postfix;
 
-public class MultipleSignsTogetherInvalidEquation extends RuntimeException {
+class MultipleSignsTogetherInvalidEquation extends RuntimeException {
 }

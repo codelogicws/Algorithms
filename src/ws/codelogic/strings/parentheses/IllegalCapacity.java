@@ -1,4 +1,4 @@
 package ws.codelogic.strings.parentheses;
 
-public class IllegalCapacity extends RuntimeException {
+class IllegalCapacity extends RuntimeException {
 }

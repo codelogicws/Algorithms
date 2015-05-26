@@ -42,7 +42,7 @@ public class StackLinkedListTest {
 
     @Test (expected = Stack.NegativeSizeStack.class)
     public void createAStackWithANegativeSize_YieldsNegativeStackException(){
-        Stack<Integer> testStack = StackFactory.make(-1);
+        StackFactory.make(-1);
     }
 
     @Test

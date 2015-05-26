@@ -46,7 +46,7 @@ public class ParenthesesValidatorTest {
     }
 
     @Test
-    public void multiParenthesesShouldNotBeInterchangable() {
+    public void multiParenthesesShouldNotBeInterchangeable() {
         assertFalse(validator.isValid("(}"));
     }
 
@@ -72,7 +72,7 @@ public class ParenthesesValidatorTest {
 
     @Test (expected = IllegalCapacity.class)
     public void negativeCapacityConstructionThrowsException() {
-        ParenthesesValidator pv = new ParenthesesValidator(-1);
+        new ParenthesesValidator(-1);
     }
 
 }

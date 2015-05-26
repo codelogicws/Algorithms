@@ -11,7 +11,6 @@ public class MergeSorterTest{
     @Before
     public void startUp(){
         integerMergeSorter = new MergeSorter<>();
-        Sorter<Integer> mergeSorter = integerMergeSorter;
     }
 
     @Test

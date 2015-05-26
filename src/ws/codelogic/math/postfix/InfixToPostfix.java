@@ -4,7 +4,7 @@ import ws.codelogic.collections.stack.Stack;
 import ws.codelogic.collections.stack.StackFactory;
 import java.util.HashMap;
 
-public class InfixToPostfix {
+class InfixToPostfix {
 
     private static final int MAX_STACK_CAPACITY = Integer.MAX_VALUE;
     private HashMap<Character, Integer> signPriority;

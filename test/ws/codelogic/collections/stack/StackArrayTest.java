@@ -71,12 +71,12 @@ public class StackArrayTest {
 
     @Test
     public void DoesAZeroCapacityStackGetCreated() {
-        Stack newStack = StackFactory.makeStackIntegerArray(0);
+        StackFactory.makeStackIntegerArray(0);
     }
 
     @Test (expected = Stack.NegativeSizeStack.class)
     public void DoesANegativeStackThrowException() {
-        Stack newStack = StackFactory.makeStackIntegerArray(-1);
+        StackFactory.makeStackIntegerArray(-1);
     }
 
 }

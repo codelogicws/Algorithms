@@ -5,13 +5,12 @@ import ws.codelogic.collections.stack.StackFactory;
 
 public class PredictLeftParentheses {
 
-    private final static int PARENTHISES_PAIR_MAX = 20000;
+    private final static int PARENTHESES_PAIR_MAX = 20000;
     private Stack<Character> stack;
-    private int rightParenthesesCount;
 
     public String insertLeft(String s){
-        rightParenthesesCount = 0;
-        stack = StackFactory.make(PARENTHISES_PAIR_MAX);
+        int rightParenthesesCount = 0;
+        stack = StackFactory.make(PARENTHESES_PAIR_MAX);
         for(int i=s.length()-1;i>=0;i--){
             char current = s.charAt(i);
             if(isStarOrForwardSlash(current)){
