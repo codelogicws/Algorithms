@@ -6,6 +6,6 @@ public class UnionFind {
     }
 
     public boolean connected(int i, int i1) {
-        return false;
+        return true;
     }
 }
