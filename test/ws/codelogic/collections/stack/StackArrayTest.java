@@ -12,7 +12,7 @@ public class StackArrayTest {
 
 
     @Before
-    public void before() throws Exception {
+    public void before() {
         stack = StackFactory.makeStackIntegerArray(STACK_SIZE);
     }
 

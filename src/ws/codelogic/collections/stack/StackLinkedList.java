@@ -46,8 +46,8 @@ public class StackLinkedList<T> implements Stack<T> {
     }
 
     private class Node<T2>{
-        public T2 value;
-        public Node<T2> next;
+        public final T2 value;
+        public final Node<T2> next;
 
         public Node(T2 value, Node<T2> next){
             this.value = value;

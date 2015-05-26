@@ -11,7 +11,7 @@ public class UnionFindTest {
     private UnionFind unionFind;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         unionFind = new UnionFind(SIZE);
     }
 

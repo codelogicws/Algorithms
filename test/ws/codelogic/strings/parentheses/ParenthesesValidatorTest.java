@@ -11,7 +11,7 @@ public class ParenthesesValidatorTest {
     private final static int TEST_CAPACITY = 6;
 
     @Before
-    public void before() throws Exception {
+    public void before() {
         validator = new ParenthesesValidator(TEST_CAPACITY);
     }
 

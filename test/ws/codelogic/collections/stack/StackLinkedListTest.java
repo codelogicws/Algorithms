@@ -2,7 +2,6 @@ package ws.codelogic.collections.stack;
 
 import org.junit.Test;
 import org.junit.Before; 
-import org.junit.After;
 
 import static org.junit.Assert.*;
 
@@ -11,12 +10,8 @@ public class StackLinkedListTest {
     private Stack<Integer> stack;
 
     @Before
-    public void before() throws Exception {
+    public void before() {
         stack = StackFactory.make(5);
-    }
-
-    @After
-    public void after() throws Exception {
     }
 
     @Test

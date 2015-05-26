@@ -2,7 +2,6 @@ package ws.codelogic.math.postfix;
 
 import org.junit.Test; 
 import org.junit.Before; 
-import org.junit.After;
 
 import static org.junit.Assert.assertEquals;
 
@@ -11,12 +10,8 @@ public class InfixToPostfixTest {
     private InfixToPostfix converter;
 
     @Before
-    public void before() throws Exception {
+    public void before(){
         converter = new InfixToPostfix();
-    }
-
-    @After
-    public void after() throws Exception {
     }
 
     @Test

@@ -2,8 +2,6 @@ package ws.codelogic.strings.parentheses;
 
 import org.junit.Test; 
 import org.junit.Before; 
-import org.junit.After;
-import ws.codelogic.strings.parentheses.PredictLeftParentheses;
 
 import static org.junit.Assert.*;
 
@@ -12,12 +10,8 @@ public class PredictLeftParenthesesTest {
     private PredictLeftParentheses predict;
 
     @Before
-    public void before() throws Exception {
+    public void before() {
         predict = new PredictLeftParentheses();
-    }
-
-    @After
-    public void after() throws Exception {
     }
 
     @Test

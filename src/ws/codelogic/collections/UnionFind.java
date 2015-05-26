@@ -2,7 +2,7 @@ package ws.codelogic.collections;
 
 public class UnionFind {
 
-    private int[] nodes;
+    private final int[] nodes;
 
     public UnionFind(int size){
         nodes = new int[size];

@@ -2,7 +2,7 @@ package ws.codelogic.collections.stack;
 
 public class StackArray <T> implements Stack<T>{
 
-    private T[] data;
+    private final T[] data;
     private int pointer;
 
     protected StackArray(T[] emptyArray){
