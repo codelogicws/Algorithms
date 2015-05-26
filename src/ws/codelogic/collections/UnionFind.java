@@ -13,16 +13,27 @@ public class UnionFind {
 
     public void connect(int index1, int index2) {
         indexOutOfBounds(index1, index2);
-        nodes[index1] = nodes[index2];
-    }
-
-    private boolean sizeOutOfBounds(int index) {
-        return index >= nodes.length || index < 0;
+        if(nodes[index1] < nodes[index2]){
+            nodes[index2] = findRoot(index1);
+        }else{
+            nodes[index1] = findRoot(index2);
+        }
     }
 
     public boolean connected(int index1, int index2) {
         indexOutOfBounds(index1, index2);
-        return nodes[index1] == nodes[index2];
+        return findRoot(nodes[index1]) == findRoot(nodes[index2]);
+    }
+
+    private int findRoot(int index) {
+        int temp = index;
+        while(nodes[temp] != temp)
+            temp = nodes[temp];
+        return temp;
+    }
+
+    private boolean sizeOutOfBounds(int index) {
+        return index >= nodes.length || index < 0;
     }
 
     private void indexOutOfBounds(int i1, int i2) {
