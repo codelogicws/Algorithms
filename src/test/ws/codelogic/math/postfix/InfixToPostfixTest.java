@@ -1,11 +1,8 @@
-package test.ws.codelogic.math.postfix;
+package ws.codelogic.math.postfix;
 
 import org.junit.Test; 
 import org.junit.Before; 
 import org.junit.After;
-import ws.codelogic.math.postfix.InfixToPostfix;
-import ws.codelogic.math.postfix.InvalidCharaterInvalidEquation;
-import ws.codelogic.math.postfix.MultipleSignsTogetherInvalidEquation;
 
 import static org.junit.Assert.assertEquals;
 

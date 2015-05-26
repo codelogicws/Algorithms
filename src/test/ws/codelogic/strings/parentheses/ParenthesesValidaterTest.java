@@ -1,4 +1,4 @@
-package test.ws.codelogic.strings.parentheses; 
+package ws.codelogic.strings.parentheses;
 
 import org.junit.Test; 
 import org.junit.Before;
