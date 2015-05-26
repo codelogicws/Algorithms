@@ -5,6 +5,7 @@ import ws.codelogic.collections.stack.StackArrayTest;
 import ws.codelogic.collections.stack.StackLinkedListTest;
 import ws.codelogic.math.postfix.InfixToPostfixTest;
 import ws.codelogic.sort.MergeSorterTest;
+import ws.codelogic.sort.QuickSorterTest;
 import ws.codelogic.strings.parentheses.ParenthesesValidatorTest;
 import ws.codelogic.strings.parentheses.PredictLeftParenthesesTest;
 import ws.codelogic.collections.UnionFindTest;
@@ -17,7 +18,8 @@ import ws.codelogic.collections.UnionFindTest;
         PredictLeftParenthesesTest.class,
         InfixToPostfixTest.class,
         UnionFindTest.class,
-        MergeSorterTest.class
+        MergeSorterTest.class,
+        QuickSorterTest.class
 })
 public class UnitTestSuite {
 
