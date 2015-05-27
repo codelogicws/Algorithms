@@ -16,6 +16,7 @@ public class QuickSorterTest {
 
     @Test
     public void alreadySortedList_ShouldGiveListBack(){
+        sort(4,5,6,7,8,8,4,3,4,5);
         assertMatch(newArray(1,2), sort(1,2));
     }
 
