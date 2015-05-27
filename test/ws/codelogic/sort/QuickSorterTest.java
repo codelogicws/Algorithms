@@ -3,6 +3,8 @@ package ws.codelogic.sort;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 public class QuickSorterTest {
@@ -16,19 +18,18 @@ public class QuickSorterTest {
 
     @Test
     public void alreadySortedList_ShouldGiveListBack(){
-        sort(4,5,6,7,8,8,4,3,4,5);
-        assertMatch(newArray(1,2), sort(1,2));
+        assertMatch(newArray(1, 2), sort(1, 2));
     }
 
-//    @Test
-//    public void sortTheSimplest2Numbers() {
-//        assertMatch(newArray(1,2), sort(2,1));
-//    }
-//
-//    @Test
-//    public void largerSortTest() {
-//        assertMatch(newArray(1,5,7,34,98,965), sort(34, 5, 98, 1, 965, 7));
-//    }
+    @Test
+    public void sortTheSimplest2Numbers() {
+        assertMatch(newArray(1,2), sort(2,1));
+    }
+
+    @Test
+    public void largerSortTest() {
+        assertMatch(newArray(1,5,7,34,98,965), sort(34, 5, 98, 1, 965, 7));
+    }
 
     private void assertMatch(Integer[] expected, Integer[] actual) {
         for (int i = 0; i < expected.length; i++)
@@ -39,7 +40,7 @@ public class QuickSorterTest {
 
     private Integer[] sort(int... i) {
         return sorter.sort(newArray(i));
-    }
+}
 
     private Integer[] newArray(int... i) {
         Integer[] newArray = new Integer[i.length];
