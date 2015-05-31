@@ -2,21 +2,25 @@ package ws.codelogic.sort;
 
 public class QuickSorter <T extends Comparable<T>> implements Sorter<T>{
 
+    private T[] array;
+
     @Override
     public T[] sort(T[] array) {
-        quickSort(array, 0, array.length-1);
+        if(array == null || array.length == 0) return null;
+        this.array = array;
+        quickSort(0, array.length-1);
         return array;
     }
 
-    private void quickSort(T[] array, int start, int end) {
+    private void quickSort(int start, int end) {
         if(end-start <= 0) return;
-        int pivotLocation = partition(array, start, end);
-        quickSort(array, start, pivotLocation-1);
-        quickSort(array, pivotLocation+1, end);
-        partition(array, start, end);
+        int pivotLocation = partition(start, end);
+        quickSort(start, pivotLocation-1);
+        quickSort(pivotLocation+1, end);
+        partition(start, end);
     }
 
-    private int partition(T[] array, int start, int end) {
+    private int partition(int start, int end) {
         T pivot = array[end];
         int leftPointer = start-1;
         int rightPointer = end;
