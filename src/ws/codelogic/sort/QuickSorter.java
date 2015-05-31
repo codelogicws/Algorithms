@@ -13,33 +13,25 @@ public class QuickSorter <T extends Comparable<T>> implements Sorter<T>{
     }
 
     private void quickSort(int start, int end) {
-        if(end-start <= 0) return;
-        int pivotLocation = partition(start, end);
-        quickSort(start, pivotLocation-1);
-        quickSort(pivotLocation+1, end);
-        partition(start, end);
-    }
+        int i = start;
+        int j = end;
+        T pivot = array[start+(end-start)/2];
 
-    private int partition(int start, int end) {
-        T pivot = array[end];
-        int leftPointer = start-1;
-        int rightPointer = end;
-        while(true){
-            //noinspection StatementWithEmptyBody (using to move the leftPointer)
-            while(array[++leftPointer].compareTo(pivot) < 0);
-            //noinspection StatementWithEmptyBody (using to move the rightPointer)
-            while(rightPointer > 0 && array[--rightPointer].compareTo(pivot) >= 0);
-            if(leftPointer>=rightPointer)break;
-            else swap(array, leftPointer, rightPointer);
+        while(i<=j){
+            while(array[i].compareTo(pivot) < 0) i++;
+            while(array[j].compareTo(pivot) > 0) j--;
+            if(i<=j){
+                swap(i,j);
+                j--;
+                i++;
+            }
         }
-        swap(array, leftPointer, end);
 
-        return leftPointer;
+        if(j > start) quickSort(start, j);
+        if(i < end) quickSort(i, end);
     }
 
-
-
-    private void swap(T[] array, int start, int end) {
+    private void swap(int start, int end) {
         T temp = array[start];
         array[start] = array[end];
         array[end] = temp;
