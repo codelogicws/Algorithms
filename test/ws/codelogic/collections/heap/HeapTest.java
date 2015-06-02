@@ -8,11 +8,19 @@ import static org.junit.Assert.assertEquals;
 public class HeapTest{
 
     private Heap<Integer> heap;
+    private final int TESTSIZE = 10;
 
     @Before
     public void startUp(){
-        Integer[] array = new Integer[5];
+        Integer[] array = new Integer[TESTSIZE];
         heap = new Heap<>(array);
+    }
+
+    @Test (expected = Heap.HeapNotLargeEnough.class)
+    public void overPush() {
+        for(int i=0;i<TESTSIZE;i++){
+            heap.insert(0);
+        }
     }
 
     @Test
@@ -29,36 +37,37 @@ public class HeapTest{
     @Test
     public void add2_getHeighestNumberFirst() {
         addToHeap(5,9);
-        assertEquals(9, pop());
-        assertEquals(5, pop());
+        popAssertEquals(9,5);
     }
 
     @Test
     public void add2ReverseOrder_getHieghestNumber() {
         addToHeap(9,5);
-        assertEquals(9, pop());
-        assertEquals(5, pop());
+        popAssertEquals(9,5);
     }
 
     @Test
     public void add3_pullAllLargestFirst() {
         addToHeap(1,3,2);
-        assertEquals(3, pop());
-        assertEquals(2, pop());
-        assertEquals(1, pop());
+        popAssertEquals(3,2,1);
     }
 
     @Test
     public void add3_pullAllLargestFirst2() {
         addToHeap(2,3,1);
-        assertEquals(3, pop());
-        assertEquals(2, pop());
-        assertEquals(1, pop());
+        popAssertEquals(3,2,1);
     }
 
     @Test
-    public void add2_pullAllLargestFirst2() {
+    public void testOrderingWithLargeInput() {
+        addToHeap(9,7,1,2,3,6,4,5,8);
+        popAssertEquals(9,8,7,6,5,4,3,2,1);
+    }
 
+    public void popAssertEquals(int... asserts){
+        for(int i : asserts){
+            assertEquals(i, pop());
+        }
     }
 
     private int pop(){
@@ -70,6 +79,5 @@ public class HeapTest{
             heap.insert(i);
         }
     }
-
 
 }
