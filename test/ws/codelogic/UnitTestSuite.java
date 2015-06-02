@@ -1,6 +1,7 @@
 package ws.codelogic;
 import org.junit.runners.Suite;
 import org.junit.runner.RunWith;
+import ws.codelogic.collections.heap.HeapTest;
 import ws.codelogic.collections.stack.StackArrayTest;
 import ws.codelogic.collections.stack.StackLinkedListTest;
 import ws.codelogic.math.postfix.InfixToPostfixTest;
@@ -19,7 +20,8 @@ import ws.codelogic.collections.UnionFindTest;
         InfixToPostfixTest.class,
         UnionFindTest.class,
         MergeSorterTest.class,
-        QuickSorterTest.class
+        QuickSorterTest.class,
+        HeapTest.class
 })
 public class UnitTestSuite {
 
